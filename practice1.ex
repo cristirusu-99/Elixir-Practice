@@ -1,4 +1,7 @@
 require IO
+require Integer
+require String
+
 defmodule MyRandomModule do
   def user, do: :Cristi
   def somefunc() do
@@ -16,5 +19,13 @@ defmodule MyRecursiveModule do
   end
 end
 
+
+defmodule MyStruct do
+  defstruct field1: 10, field2: "ZECE"
+  def printable(struct), do: "Numarul " <> Integer.to_string(struct.field1) <> " este scris " <> struct.field2
+end
+
+zece = %MyStruct{}
+
 MyRandomModule.somefunc()
-MyRecursiveModule.recPrint("Mesaj interesant", 10)
+MyRecursiveModule.recPrint("Mesaj interesant <#{MyStruct.printable(zece)}>", 10)
